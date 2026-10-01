@@ -1,0 +1,24 @@
+{
+    "name": "font-changer-chrome",
+    "version": "2.0.0",
+    "private": true,
+    "description": "Chrome extension that replaces code/monospace fonts on every page with a font chosen from the system font list.",
+    "type": "module",
+    "scripts": {
+        "dev": "tsc -p tsconfig.json --watch",
+        "build": "tsc -p tsconfig.json && node scripts/copy-assets.mjs",
+        "lint": "eslint . --max-warnings=0",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "typecheck": "tsc --noEmit"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.39.5",
+        "@types/chrome": "^0.3.4",
+        "eslint": "^9.39.5",
+        "globals": "^17.13.0",
+        "prettier": "^3.9.9",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.71.0"
+    }
+}
