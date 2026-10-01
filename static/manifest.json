@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "Chrome-Font-Modifier",
+    "version": "2.0.0",
+    "description": "Replaces code and monospace fonts on every page with a font you choose, and body fonts on programming-learning sites.",
+    "action": {
+        "default_popup": "popup/popup.html",
+        "default_title": "Select Code Font"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "exclude_matches": ["*://*.youtube.com/*", "*://*.youtube-nocookie.com/*"],
+            "js": ["content/content.js"],
+            "run_at": "document_idle",
+            "all_frames": true
+        }
+    ],
+    "permissions": ["storage", "activeTab", "tabs", "fontSettings"],
+    "icons": {
+        "48": "icon.png",
+        "96": "icon.png"
+    }
+}
