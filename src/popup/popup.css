@@ -64,6 +64,29 @@ button:active {
     background: #002275;
 }
 
+button.secondary {
+    background: #fff;
+    color: #0060df;
+    border: 1px solid #0060df;
+}
+
+button.secondary:hover {
+    background: #e8f0fe;
+}
+
+button.secondary:active {
+    background: #d2e3fc;
+}
+
+.preview {
+    margin: 0 0 10px 0;
+    padding: 8px;
+    overflow-wrap: anywhere;
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
 .status {
     display: none;
     padding: 8px;

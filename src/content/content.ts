@@ -49,7 +49,8 @@ function ensureStyleElement(id: string): HTMLStyleElement {
 
     const style = document.createElement('style');
     style.id = id;
-    document.head.append(style);
+    // XML documents have no <head>; fall back to the document element.
+    (document.head ?? document.documentElement).append(style);
     return style;
 }
 

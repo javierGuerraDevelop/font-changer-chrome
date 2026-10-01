@@ -1,8 +1,37 @@
+const GENERIC_FONT_FAMILIES = new Set([
+    'serif',
+    'sans-serif',
+    'monospace',
+    'cursive',
+    'fantasy',
+    'system-ui',
+    'ui-serif',
+    'ui-sans-serif',
+    'ui-monospace',
+    'ui-rounded',
+    'math',
+    'emoji',
+    'fangsong',
+]);
+
 let measurementContext: CanvasRenderingContext2D | null | undefined;
 
 /** Quotes a font family so it can be embedded in a CSS font shorthand. */
 export function quoteFontFamily(fontFamily: string): string {
     return `"${fontFamily.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
+}
+
+/**
+ * Builds a CSS font stack for a font name, appending a fallback family.
+ * Names that already contain a comma or quote are treated as full stacks.
+ */
+export function buildFontStack(fontFamily: string, fallbackFamily = 'monospace'): string {
+    const trimmed = fontFamily.trim();
+    if (trimmed.length === 0) return fallbackFamily;
+    if (GENERIC_FONT_FAMILIES.has(trimmed.toLowerCase())) return trimmed;
+
+    const family = trimmed.includes(',') || trimmed.includes('"') ? trimmed : quoteFontFamily(trimmed);
+    return `${family}, ${fallbackFamily}`;
 }
 
 function getMeasurementContext(): CanvasRenderingContext2D | null {

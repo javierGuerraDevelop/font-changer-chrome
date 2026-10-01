@@ -7,9 +7,11 @@
     </head>
     <body>
         <h1>Select Code Font</h1>
-        <p class="hint">Only monospaced fonts installed on your system are listed.</p>
+        <p class="hint">Only monospaced fonts installed on your system are listed. Each font name is shown in its own typeface.</p>
         <div id="font-list" class="font-list" role="radiogroup" aria-label="Monospaced fonts"></div>
+        <p id="preview" class="preview" aria-live="polite">The quick brown fox jumps over the lazy dog. 0123456789</p>
         <button id="set-button" type="button">Set</button>
+        <button id="add-font-button" type="button" class="secondary">Add Font</button>
         <div id="status" class="status" role="status"></div>
         <script type="module" src="popup.js"></script>
     </body>
