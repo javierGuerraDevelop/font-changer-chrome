@@ -1,4 +1,4 @@
-import { mergeFontNames } from '../shared/fontUtils.js';
+import { isMonospaced, mergeFontNames } from '../shared/fontUtils.js';
 import { loadSettings, saveSelectedFont } from '../shared/storage.js';
 
 const STATUS_DURATION_MS = 2000;
@@ -58,7 +58,8 @@ function renderFontList(): void {
 async function loadFonts(): Promise<void> {
     const [settings, systemFonts] = await Promise.all([loadSettings(), chrome.fontSettings.getFontList()]);
 
-    fonts = mergeFontNames(systemFonts.map((font) => font.displayName));
+    const monospacedFonts = systemFonts.map((font) => font.displayName).filter((fontFamily) => isMonospaced(fontFamily));
+    fonts = mergeFontNames(monospacedFonts);
     selectedFont = settings.selectedFont ?? fonts[0] ?? null;
     renderFontList();
 }
